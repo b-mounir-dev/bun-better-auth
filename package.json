@@ -1,0 +1,66 @@
+{
+  "name": "bun-better-auth",
+  "version": "1.0.0",
+  "description": "Better Auth database adapter using Bun's native SQL client — no extra drivers needed. Supports PostgreSQL, MySQL, and SQLite.",
+  "type": "module",
+  "license": "MIT",
+  "author": "Mounir Bouaiche",
+  "homepage": "https://github.com/b-mounir-dev/bun-better-auth",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/b-mounir-dev/bun-better-auth.git"
+  },
+  "bugs": {
+    "url": "https://github.com/b-mounir-dev/bun-better-auth/issues"
+  },
+  "keywords": [
+    "better-auth",
+    "bun",
+    "bun-sql",
+    "database",
+    "adapter",
+    "auth",
+    "authentication",
+    "postgres",
+    "postgresql",
+    "mysql",
+    "sqlite"
+  ],
+  "engines": {
+    "bun": ">=1.2.0"
+  },
+  "sideEffects": false,
+  "files": [
+    "dist"
+  ],
+  "main": "./dist/index.mjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.mts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.mts",
+      "default": "./dist/index.mjs"
+    }
+  },
+  "scripts": {
+    "build": "tsdown",
+    "test": "bun test src/__tests__",
+    "test:e2e": "bun test src/e2e",
+    "test:contract": "bunx --bun vitest run --config vitest.contract.config.ts",
+    "test:all": "bun run test && bun run test:e2e && bun run test:contract && bun run typecheck && bun run build",
+    "prepublishOnly": "bun run test:all",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@better-auth/core": "^1.6.11",
+    "@better-auth/test-utils": "^1.6.11",
+    "@types/bun": "latest",
+    "better-auth": "^1.6.11",
+    "tsdown": "^0.22.0",
+    "typescript": "^6.0.3",
+    "vitest": "^4.1.7"
+  },
+  "peerDependencies": {
+    "@better-auth/core": "^1.6.11"
+  }
+}
